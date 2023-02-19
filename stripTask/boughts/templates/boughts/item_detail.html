@@ -1,0 +1,21 @@
+{% load static %}
+
+<html>
+  <head>
+    <title>Buy Item 1</title>
+  </head>
+  <body>
+    <h1>{{ object.name }}</h1>
+    <p>{{ object.description }}</p>
+    <p>{{ object.price }}</p>
+    <button class="buy-button"
+		    action="{% url 'get_session_id' item_pk=object.id%}">
+	    Buy
+    </button>
+
+    <meta name="stripe_pk" content="{{ stripe_pk }}">
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{% static 'boughts/js/stripe_redirector.js' %}"></script>
+  </body>
+</html>
